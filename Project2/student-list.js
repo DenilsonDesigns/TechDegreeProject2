@@ -4,20 +4,33 @@ const studentDeets = document.getElementsByClassName('student-item cf');
 const noOfButtons= Math.ceil(studentDeets.length/10);
 
 //create pagination div
-const $pagination = $('<div class="pagination"><ul></ul></div>');
+//dont know how to generate these dynamically based on the number of students, or at all honestly. 
+const $pagination = $('<div class="pagination"><ul><li><a class="active" href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li><a href="#">6</a></li></ul></div>');
 //append to webpage
 $('.page').append($pagination);
 
-//add buttons to $pagination
-const $button = $('<li><a class="active" href="#">1</a></li>');
-$('.pagination').append($button);
+
+//tagging all buttons
+buttons= document.getElementsByTagName('a');
 
 
 
+//trying to build function to deactivate all buttons from "active" and only set to "active" the button that is clicked. 
+    
+    //deactivate all
+    for (let i=0; i<buttons.length; i++){
+        buttons[i].classList.remove("active");
+    }
 
 
-console.log();
+buttons.addEventListener("click", (e)=> {
+    
+    buttons.classList.add("active");
+   //set the one clicked to active
 
+
+
+});
 
 // This ​function ​builds ​a ​list ​of ​ten ​students ​and ​displays ​it ​on ​the ​page. ​The ​students ​displayed
 // depends ​on ​the ​page ​number ​passed ​to ​this ​function. ​The ​function ​should ​loop ​through ​all ​the
