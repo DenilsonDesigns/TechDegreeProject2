@@ -1,5 +1,5 @@
 //storing in variable all the student details on page.
-const studentDeets = document.getElementsByClassName('student-item cf');
+const studentDeets = document.getElementsByClassName('student-item'); // previously 'student-item cf'
 
 
 
@@ -35,9 +35,9 @@ showPage(1, studentDeets);
     // corresponding ​page, ​and ​mark ​the ​active ​link. ​For ​example, ​clicking ​the ​link ​to ​page ​2 ​will ​tell
     // the ​showPage ​function ​to ​display ​students ​11 ​through ​20.
 
-function appendPageLinks(/* take a student list as an argument */) {
+function appendPageLinks(studentList) {
     // determine how many pages for this student list
-    const noOfButtons= Math.ceil(studentDeets.length/10);
+    const noOfButtons= Math.ceil(studentList.length/10);
 
     // create a page link section
     const paginDiv= document.createElement('div');
@@ -48,11 +48,15 @@ function appendPageLinks(/* take a student list as an argument */) {
     paginDiv.appendChild(ul);
 
     // "for" every page
-    for(let i=0; i< noOfButtons; i++){
+    for(let i=1; i<= noOfButtons; i++){
         //create li
+        const li= document.createElement('li');
         //append li to ul
+        ul.appendChild(li);
         //add <a> with page number as textContent
-
+        const a= document.createElement('a');
+        li.appendChild(a);
+        a.innerText= i;
     }
 
     // add a page link to the page link section
@@ -62,4 +66,6 @@ function appendPageLinks(/* take a student list as an argument */) {
     // Use showPage to display the page for the link clicked
     // mark that link as "active"
     
-    }   
+}   
+
+appendPageLinks(studentDeets);
