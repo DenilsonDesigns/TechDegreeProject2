@@ -25,7 +25,7 @@ function showPage(pageNumber, studentDetails) {
     }
 
 //attempt to get 20-30 to show up.
-showPage(1, studentDeets);
+
 
 
 
@@ -35,6 +35,7 @@ showPage(1, studentDeets);
     // corresponding ​page, ​and ​mark ​the ​active ​link. ​For ​example, ​clicking ​the ​link ​to ​page ​2 ​will ​tell
     // the ​showPage ​function ​to ​display ​students ​11 ​through ​20.
 
+let allButtons= document.getElementsByTagName('a');
 function appendPageLinks(studentList) {
     // determine how many pages for this student list
     const noOfButtons= Math.ceil(studentList.length/10);
@@ -59,11 +60,15 @@ function appendPageLinks(studentList) {
         a.innerText= i;
     }
 
-    // add a page link to the page link section
-    // remove the old page link section from the site
-    // append our new page link section to the site
+
     // define what happens when you click a link (event listener)
+
+
+    allButtons.addEventListener('click', (e)=>{
+        e.target.className= "active";
+    });
     // Use showPage to display the page for the link clicked
+    showPage(1, studentDeets);
     // mark that link as "active"
     
 }   
