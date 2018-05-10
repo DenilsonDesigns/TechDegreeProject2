@@ -1,36 +1,7 @@
 //storing in variable all the student details on page.
 const studentDeets = document.getElementsByClassName('student-item cf');
-//obtaining number of pages needed based on studentDeets length.
-const noOfButtons= Math.ceil(studentDeets.length/10);
-
-//create pagination div
-//dont know how to generate these dynamically based on the number of students, or at all honestly. 
-const $pagination = $('<div class="pagination"><ul><li><a class="active" href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li><a href="#">6</a></li></ul></div>');
-//append to webpage
-$('.page').append($pagination);
 
 
-//tagging all buttons
-buttons= document.getElementsByTagName('a');
-
-
-
-//trying to build function to deactivate all buttons from "active" and only set to "active" the button that is clicked. 
-    
-    //deactivate all
-    for (let i=0; i<buttons.length; i++){
-        buttons[i].classList.remove("active");
-    }
-
-
-buttons.addEventListener("click", (e)=> {
-    
-    buttons.classList.add("active");
-   //set the one clicked to active
-
-
-
-});
 
 // This ​function ​builds ​a ​list ​of ​ten ​students ​and ​displays ​it ​on ​the ​page. ​The ​students ​displayed
 // depends ​on ​the ​page ​number ​passed ​to ​this ​function. ​The ​function ​should ​loop ​through ​all ​the
@@ -38,20 +9,23 @@ buttons.addEventListener("click", (e)=> {
 // this ​page ​and ​hide ​the ​rest. ​Here ​are ​some ​ideas ​for ​how ​this ​could ​work ​in ​code:
 
 
-function showPage(/* arguments for page number and student list */) {
+function showPage(pageNumber, studentDetails) {
     // first hide all students on the page
-    for(let i=0; i<studentDeets.length; i++ ){
-        studentDeets[i].style.display= 'none';
-    }
+    for(let i=0; i<studentDetails.length; i++ ){
+        studentDetails[i].style.display= 'none';
+        }
+       
+    let counter= pageNumber*10;
+    for(counter; (counter)< ((pageNumber*10)+10); counter++){
     // then loop through all students in our student list argument
-
     // if student should be on this page number
     // show the student
-    
+        studentDetails[counter].style.display= 'block';
+        }
     }
 
-
-
+//attempt to get 20-30 to show up.
+showPage(1, studentDeets);
 
 
 
@@ -63,10 +37,24 @@ function showPage(/* arguments for page number and student list */) {
 
 function appendPageLinks(/* take a student list as an argument */) {
     // determine how many pages for this student list
+    const noOfButtons= Math.ceil(studentDeets.length/10);
 
     // create a page link section
+    const paginDiv= document.createElement('div');
+    paginDiv.className= 'pagination';
+    const mainDiv= document.querySelector('div.page');
+    mainDiv.appendChild(paginDiv);
+    const ul= document.createElement('ul');
+    paginDiv.appendChild(ul);
 
     // "for" every page
+    for(let i=0; i< noOfButtons; i++){
+        //create li
+        //append li to ul
+        //add <a> with page number as textContent
+
+    }
+
     // add a page link to the page link section
     // remove the old page link section from the site
     // append our new page link section to the site
