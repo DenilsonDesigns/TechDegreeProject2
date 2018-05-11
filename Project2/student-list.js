@@ -32,7 +32,9 @@ function showPage(pageNumber, studentDetails) {
     //building list of 10 students based on page number
     let counter= pageNumber*10;
     for(counter; (counter)< ((pageNumber*10)+10); counter++){
-        studentDetails[counter].style.display= 'block';
+            if (counter<studentDetails.length){
+            studentDetails[counter].style.display= 'block';
+            }
         }
     }
    
